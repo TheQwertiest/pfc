@@ -34,7 +34,7 @@ namespace pfc {
 		}
 		return ~0;
 	}
-
+    
     void create_move_item_permutation( size_t * order, size_t count, size_t from, size_t to ) {
         PFC_ASSERT( from < count );
         PFC_ASSERT( to < count );
@@ -49,7 +49,7 @@ namespace pfc {
             order[w] = i;
         }
     }
-
+    
     void create_move_items_permutation(t_size * p_output,t_size p_count,const bit_array & p_selection,int p_delta) {
 		t_size * const order = p_output;
 		const t_size count = p_count;

@@ -116,7 +116,7 @@ namespace pfc {
 	}
 
 	template<typename comparator_t = comparator_default>
-	class comparator_stdlist {
+	class comparator_stdlist { 
 	public:
 		template<typename t_list1, typename t_list2>
 		static int compare(const t_list1 & p_list1, const t_list2 & p_list2) {

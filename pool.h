@@ -28,7 +28,7 @@ namespace pfc {
 			m_maxCount = c;
 		}
 		void put(objRef_t obj) {
-			insync(m_sync);
+			insync(m_sync); 
 			if ( m_pool.size() < m_maxCount ) {
 				m_pool.push_back(obj);
 			}

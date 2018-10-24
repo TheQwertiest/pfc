@@ -174,7 +174,7 @@ namespace pfc {
 		bit_array_bittable(const pfc::bit_array & in, size_t inSize);
 		bit_array_bittable() : m_count() {}
 
-
+		
 		void set(t_size n, bool val);
 
 		bool get(t_size n) const;

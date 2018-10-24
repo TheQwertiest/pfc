@@ -16,7 +16,7 @@ namespace pfc {
 		~array_staticsize_t() {release_();}
 
 		//! Copy constructor nonfunctional when data type is not copyable.
-		array_staticsize_t(const t_self & p_source) : m_array(NULL), m_size(0) {
+		array_staticsize_t(const t_self & p_source) : m_size(0), m_array(NULL) {
 			*this = p_source;
 		}
         array_staticsize_t(t_self && p_source) {
@@ -35,7 +35,7 @@ namespace pfc {
             }
 			return *this;
 		}
-
+        
         //! Move operator.
         const t_self & operator=(t_self && p_source) {
             release_();
@@ -64,7 +64,7 @@ namespace pfc {
                 m_size = p_count;
             }
 		}
-
+        
         template<typename t_source>
         void assign(t_source const * items, size_t count) {
             set_data_fromptr( items, count );

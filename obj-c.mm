@@ -52,7 +52,7 @@ namespace pfc {
     }
 
 	void inAutoReleasePool(std::function<void()> f) {
-		@autoreleasepool {
+		@autoreleasepool {		
 			f();
 		}
 	}

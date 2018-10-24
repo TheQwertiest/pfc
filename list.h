@@ -232,16 +232,8 @@ public:
 		int compare(const T& p_item1,const T& p_item2) {return ::pfc::compare_t(p_item1,p_item2);}
 	};
 
-	void sort()
-	{
-		sort_callback_auto p_callback;
-		sort(p_callback);
-	}
-	template<typename t_compare> void sort_t(t_compare p_compare)
-	{
-		sort_callback_impl_t<t_compare> p_callback(p_compare);
-		sort(p_callback);
-	}
+	void sort() {sort(sort_callback_auto());}
+	template<typename t_compare> void sort_t(t_compare p_compare) {sort(sort_callback_impl_t<t_compare>(p_compare));}
 	template<typename t_compare> void sort_stable_t(t_compare p_compare) {sort_stable(sort_callback_impl_t<t_compare>(p_compare));}
 
 	template<typename t_compare> void sort_remove_duplicates_t(t_compare p_compare)
@@ -617,7 +609,7 @@ template<typename T,typename P>
 class list_const_permutation_t : public list_base_const_t<T>
 {
 public:
-	inline list_const_permutation_t(const list_base_const_t<T> & p_list,P p_permutation) : m_permutation(p_permutation), m_list(p_list) {}
+	inline list_const_permutation_t(const list_base_const_t<T> & p_list,P p_permutation) : m_list(p_list), m_permutation(p_permutation) {}
 	t_size get_count() const {return m_list.get_count();}
 	void get_item_ex(T & p_out,t_size n) const {m_list.get_item_ex(p_out,m_permutation[n]);}
 private:

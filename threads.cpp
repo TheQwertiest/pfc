@@ -180,7 +180,7 @@ namespace pfc {
 		thread::appleStartThreadPrologue();
 #endif
 		pthread_t thread;
-
+		
         if (pthread_create(&thread, NULL, nixSplitThreadProc, arg.get_ptr()) < 0) thread::couldNotCreateThread();
 
 		pthread_detach(thread);

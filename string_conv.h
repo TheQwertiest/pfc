@@ -293,7 +293,7 @@ namespace pfc {
             const char * get_ptr() const {return m_buffer.get_ptr();}
             bool is_empty() const {return string_is_empty_t(get_ptr());}
             t_size length() const {return strlen_t(get_ptr());}
-
+            
         private:
             char_buffer_t<char, pfc::alloc_fast_aggressive> m_buffer;
 		};

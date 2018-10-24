@@ -9,7 +9,7 @@ namespace pfc {
 	class waitQueue {
 	public:
 		waitQueue() : m_eof() {}
-
+		
 		void put( obj_t const & obj ) {
 			mutexScope guard( m_mutex );
 			m_list.push_back( obj );
@@ -26,7 +26,7 @@ namespace pfc {
 			m_eof = true;
 			m_canRead.set_state(true);
 		}
-
+        
         eventHandle_t get_event_handle() {
             return m_canRead.get_handle();
         }

@@ -24,11 +24,11 @@ namespace pfc {
 		for (ptr = find(val, start, count);found<count_max && ptr<max;ptr = find(val, ptr + 1, max - ptr - 1)) found++;
 		return found;
 	}
-	t_size bit_array::find_first(bool val, t_size start, t_size max) const {
-		return find(val, start, max - start);
+	t_size bit_array::find_first(bool val, t_size start, t_size max) const { 
+		return find(val, start, max - start); 
 	}
-	t_size bit_array::find_next(bool val, t_size previous, t_size max) const {
-		return find(val, previous + 1, max - (previous + 1));
+	t_size bit_array::find_next(bool val, t_size previous, t_size max) const { 
+		return find(val, previous + 1, max - (previous + 1)); 
 	}
 	void bit_array::walk(size_t to, std::function< void ( size_t ) > f, bool val ) const {
 		for ( size_t w = find_first(val, 0, to ); w < to; w = find_next(val, w, to) ) {

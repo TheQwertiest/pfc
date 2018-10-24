@@ -87,8 +87,7 @@ void winUnPrefixPath(pfc::string_base & out, const char * p_path) {
 	const char * prepend_header = "\\\\?\\";
 	const char * prepend_header_net = "\\\\?\\UNC\\";
 	if (pfc::strcmp_partial(p_path, prepend_header_net) == 0) {
-		pfc::string_formatter formatter; 
-		out = formatter << "\\\\" << (p_path + strlen(prepend_header_net));
+		out = pfc::string_formatter() << "\\\\" << (p_path + strlen(prepend_header_net) );
 		return;
 	}
 	if (pfc::strcmp_partial(p_path, prepend_header) == 0) {
@@ -177,7 +176,7 @@ void CClipboardOpenScope::Close() {
 }
 
 
-CGlobalLockScope::CGlobalLockScope(HGLOBAL p_handle) : m_ptr(GlobalLock(p_handle)), m_handle(p_handle) {
+CGlobalLockScope::CGlobalLockScope(HGLOBAL p_handle) : m_handle(p_handle), m_ptr(GlobalLock(p_handle)) {
 	if (m_ptr == NULL) throw std::bad_alloc();
 }
 CGlobalLockScope::~CGlobalLockScope() {
