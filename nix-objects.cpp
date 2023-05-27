@@ -187,10 +187,11 @@ namespace pfc {
         return sel.Select( timeOutSeconds ) > 0;
     }
     
-    nix_event::nix_event() {
+    nix_event::nix_event(bool state) {
         createPipe( m_fd );
         setNonBlocking( m_fd[0] );
         setNonBlocking( m_fd[1] );
+        if ( state ) set_state(true);
     }
     nix_event::~nix_event() {
         close( m_fd[0] );
@@ -232,6 +233,9 @@ namespace pfc {
         }
         crash(); // should not get here
         return SIZE_MAX;
+    }
+    size_t nix_event::g_multiWait(std::initializer_list<eventHandle_t> const & arg, double timeout) {
+        return g_multiWait(arg.begin(), arg.size(), timeout);
     }
     int nix_event::g_twoEventWait( int h1, int h2, double timeout ) {
         fdSelect sel;
